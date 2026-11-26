@@ -31,6 +31,8 @@ def validate(text: str) -> None:
     """Raise ValueError on any pattern the entry must never carry."""
     if not text or not text.strip():
         raise ValueError("entry is empty or whitespace only")
+    if text != text.strip():
+        raise ValueError("entry must not carry leading or trailing whitespace")
     if len(text) > MAX_CHARS:
         raise ValueError(f"entry is {len(text)} chars, over the {MAX_CHARS} limit")
     if "\n" in text or "\r" in text:
